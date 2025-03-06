@@ -1,0 +1,180 @@
+#:kivy 2.0.0
+
+ScreenManager:
+    LoginScreen:
+    SignupScreen:
+    HomeScreen:
+
+<LoginScreen>:
+    name: "login"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: 0.12, 0.12, 0.12, 1  # Dark background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Login"
+            font_size: 24
+            color: 1, 1, 1, 1
+            bold: True
+            size_hint_y: None
+            height: 50
+        
+        TextInput:
+            id: username
+            hint_text: "Enter Username"
+            multiline: False
+            size_hint_y: None
+            height: 40
+            background_color: 1, 1, 1, 1
+            foreground_color: 0, 0, 0, 1
+            padding: [10, 10]
+
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            spacing: 5
+
+            TextInput:
+                id: password
+                hint_text: "Enter Password"
+                password: True
+                multiline: False
+                size_hint_x: 0.85
+                background_color: 1, 1, 1, 1
+                foreground_color: 0, 0, 0, 1
+                padding: [10, 10]
+
+            ToggleButton:
+                text: "👁"
+                size_hint_x: 0.15
+                on_release: password.password = not password.password
+
+        Button:
+            text: "Login"
+            size_hint_y: None
+            height: 50
+            background_color: 1, 0.34, 0.2, 1  # Red button
+            on_press: app.root.current = "home"
+
+        Button:
+            text: "Don't have an account? Signup"
+            size_hint_y: None
+            height: 40
+            background_color: 0, 0, 0, 0
+            color: 1, 1, 1, 1
+            on_press: app.root.current = "signup"
+
+<SignupScreen>:
+    name: "signup"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: 0.12, 0.12, 0.12, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Signup"
+            font_size: 24
+            color: 1, 1, 1, 1
+            bold: True
+            size_hint_y: None
+            height: 50
+
+        TextInput:
+            id: new_username
+            hint_text: "Enter New Username"
+            multiline: False
+            size_hint_y: None
+            height: 40
+            background_color: 1, 1, 1, 1
+            foreground_color: 0, 0, 0, 1
+            padding: [10, 10]
+
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            spacing: 5
+
+            TextInput:
+                id: new_password
+                hint_text: "Enter New Password"
+                password: True
+                multiline: False
+                size_hint_x: 0.85
+                background_color: 1, 1, 1, 1
+                foreground_color: 0, 0, 0, 1
+                padding: [10, 10]
+
+            ToggleButton:
+                text: "👁"
+                size_hint_x: 0.15
+                on_release: new_password.password = not new_password.password
+
+        Button:
+            text: "Signup"
+            size_hint_y: None
+            height: 50
+            background_color: 1, 0.34, 0.2, 1
+            on_press: app.root.current = "login"
+
+        Button:
+            text: "Go to Login"
+            size_hint_y: None
+            height: 40
+            background_color: 0, 0, 0, 0
+            color: 1, 1, 1, 1
+            on_press: app.root.current = "login"
+
+<HomeScreen>:
+    name: "home"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: 0.12, 0.12, 0.12, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Welcome to the App!"
+            font_size: 24
+            color: 1, 1, 1, 1
+            bold: True
+            size_hint_y: None
+            height: 50
+
+        Button:
+            text: "Communication"
+            size_hint_y: None
+            height: 50
+            background_color: 1, 0.34, 0.2, 1
+            on_press: app.communication()
+
+        Button:
+            text: "Emergency"
+            size_hint_y: None
+            height: 50
+            background_color: 1, 0.34, 0.2, 1
+            on_press: app.emergency()
+
+        Button:
+            text: "Learning"
+            size_hint_y: None
+            height: 50
+            background_color: 1, 0.34, 0.2, 1
+            on_press: app.learning()
